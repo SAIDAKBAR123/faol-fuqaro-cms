@@ -29,6 +29,12 @@ const routes = [
         component: () => import('../views/Blog.vue')
       },
       {
+        path: '/layout-content',
+        name: 'Layout',
+        accessControl: true,
+        component: () => import('../views/Layout.vue')
+      },
+      {
         path: '/create-post',
         name: 'NewPost',
         accessControl: true,

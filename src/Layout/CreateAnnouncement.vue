@@ -233,6 +233,7 @@ export default {
 
       Blogs.postMainImage(this.imageFile).then(res => {
         this.mainImage = res
+        console.log(res)
       }).catch(err => console.log(err))
     },
     // getAll () {

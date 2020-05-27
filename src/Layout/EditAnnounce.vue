@@ -11,7 +11,7 @@
                          <v-col cols="auto" class="mx-2">
                              <v-row justify="center" class="py-0">
                                     <v-col class="py-0" cols="auto"><v-btn large outlined color="grey" to="/blog" class="">Cancel</v-btn></v-col>
-                                    <v-col class="py-0" cols="auto"><v-btn large color="primary" class="" @click="publish">Save <v-icon right>mdi-menu-down-outline</v-icon></v-btn></v-col>
+                                    <v-col class="py-0" cols="auto"><v-btn large color="success" class="" @click="publish">Save <v-icon right>mdi-menu-down-outline</v-icon></v-btn></v-col>
                              </v-row>
                          </v-col>
                      </v-row>
@@ -57,7 +57,7 @@
                  <v-card tile flat class="pa-3">
                       <v-row justify="center" align="center">
                     <v-col cols="py-0">
-                        <span class="py-0">Image for article</span>
+                        <span class="py-0">Image for Announcement</span>
                     </v-col>
                     <v-col class="py-0" cols="12" align-self="center">
                         <v-card tile flat>
@@ -110,7 +110,7 @@
                                     v-on="on"
                                 ></v-text-field>
                                 </template>
-                                <v-date-picker :min="date" v-model="date" @input="menu = false"></v-date-picker>
+                                <v-date-picker :min="present" v-model="date" @input="menu = false"></v-date-picker>
                             </v-menu>
                     </v-col>
                      </v-row>
@@ -134,13 +134,13 @@
 </template>
 
 <script>
-import Blogs from '../services/Blogs'
 import Announcement from '../services/Announcement'
 export default {
   props: ['id'],
   data () {
     return {
       menu: '',
+      present: new Date().toISOString().substr(0, 10),
       date: new Date().toISOString().substr(0, 10),
       contents: [
         {
@@ -167,7 +167,6 @@ export default {
       imageFile: new FormData(),
       api: '',
       selected: [],
-      content: '<span class="nunito fs_28_bold" >Stay home</span>',
       editorOption: {
         // Some Quill options...
       }
@@ -186,11 +185,8 @@ export default {
   },
   methods: {
     removeImage (id) {
-      Blogs.deleteMainImage(id).then(res => {
-        this.mainImage.url = ''
-        this.imageFile = new FormData()
-        console.log(res)
-      }).catch(err => console.log(err))
+      this.mainImage.url = ''
+      this.imageFile = new FormData()
     },
     saveAsDraft () {
     },
@@ -206,9 +202,7 @@ export default {
         mainImageId: this.mainImage.id,
         expiryDate: new Date(this.date).getTime()
       }
-      console.log(formData)
-      Announcement.postNewAnnounce(formData).then(res => {
-        console.log(res)
+      Announcement.updateSingleAnn(this.id, formData).then(res => {
         this.$notify({
           group: 'foo',
           title: 'Announcement has posted successfully',
@@ -232,7 +226,7 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.imageFile.append('file', files[0])
 
-      Blogs.postMainImage(this.imageFile).then(res => {
+      Announcement.updateMainImage(this.id, this.imageFile).then(res => {
         this.mainImage = res
       }).catch(err => console.log(err))
     },
@@ -249,6 +243,8 @@ export default {
         this.mainImage.url = res.mainImage.mainImageUrl
         this.mainImage.id = res.mainImageId
         this.mainImageId = res.mainImageId
+        this.date = new Date(res.expiryDate).toISOString().substr(0, 10)
+        console.log(this.date)
       }).catch(err => {
         console.log(err)
       })
@@ -265,20 +261,6 @@ export default {
     onEditorChange ({ quill, html, text }) {
       // console.log('editor change!', quill, html, text)
       this.content = html
-    },
-    eventAccured (val) {
-      alert('Drag and drop zone')
-      console.log(val)
-    },
-    getType (val) {
-      console.log(val)
-    },
-    remove (item) {
-      // console.log(item)
-      // const num = this.selectedCategory.filter((el, index) => {
-      //   if (el.id === item.id) { this.selectedCategory = this.selectedCategory.slice(index, -1) }
-    //  })
-    // console.log(num)
     }
   },
   created () {

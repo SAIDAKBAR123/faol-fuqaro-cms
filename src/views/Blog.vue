@@ -194,7 +194,7 @@ export default {
       analysis: [
         {
           icon: 'mdi-script-outline',
-          name: 'Total Post',
+          name: 'Total News',
           value: '394'
         },
         {
@@ -204,12 +204,12 @@ export default {
         },
         {
           icon: 'mdi-note-text',
-          name: 'Total Drafts',
+          name: 'Total Archives',
           value: '3'
         },
         {
-          icon: 'mdi-seal',
-          name: 'Total assets',
+          icon: 'mdi-bullhorn-outline',
+          name: 'Total Announcements',
           value: '394'
         }
 

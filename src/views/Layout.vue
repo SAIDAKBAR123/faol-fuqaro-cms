@@ -1,6 +1,6 @@
 <template>
   <div>
-        <h2 class=" text--accent-3">Setting is on process....</h2>
+      sadas
   </div>
 </template>
 
