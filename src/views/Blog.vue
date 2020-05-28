@@ -82,7 +82,7 @@
                           </v-card>
                         </template>
                          <template v-slot:item.status="{ item }">
-                          <v-chip :color="item.status ? 'light-green lighten-4' : 'deep-purple lighten-4'">{{item.status ? 'chop etilgan': 'chop etilmagan'}}</v-chip>
+                          <v-chip @click="pw(item)" :color="pw(item).color">{{pw(item).name}}</v-chip>
                         </template>
                           <template v-slot:item.date="{ item }">
                          <span>{{item.createdAt | moment('Do MMM, YYYY')}}</span>
@@ -121,7 +121,9 @@ import Archived from '../services/Archived'
 export default {
   methods: {
     pw (item) {
-      item.status = !item.status
+      if (item.status === 0) return { color: 'deep-purple lighten-4', name: 'chop etilmagan' }
+      if (item.status === 1) return { color: 'light-green lighten-4', name: 'chop etilgan' }
+      if (item.status === 2) return { color: 'red lighten-1', name: 'arxivlangan' }
     },
     deletePost (id) {
       this.deleteSinglePost = {
@@ -156,6 +158,12 @@ export default {
     DeleteBlogDialog
   },
   watch: {
+    item: {
+      handler (val) {
+        console.log(val)
+      },
+      deep: true
+    },
     selectedType (val) {
       if (val.id === 1) {
         Blogs.getAllPosts().then(res => {
