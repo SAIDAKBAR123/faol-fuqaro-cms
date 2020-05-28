@@ -38,7 +38,7 @@
         class="hidden-sm-and-up"
         @click.stop="drawer = !drawer"
       />
-      <v-toolbar-title class="nunito fs_20">CMS</v-toolbar-title>
+      <v-toolbar-title class="nunito fs_20"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-row justify="end" align="center">
         <v-col cols="auto">
@@ -158,13 +158,13 @@ export default {
       }
     ],
     sidebar: [
+      // {
+      //   name: 'Dashboard',
+      //   path: '/',
+      //   icon: 'mdi-view-dashboard'
+      // },
       {
-        name: 'Dashboard',
-        path: '/',
-        icon: 'mdi-view-dashboard'
-      },
-      {
-        name: 'Blog',
+        name: 'Yangiliklar',
         path: '/blog',
         icon: 'mdi-feather'
       },
@@ -174,20 +174,20 @@ export default {
       //   icon: 'mdi-file-document-edit-outline'
       // },
       {
-        name: 'Layout Contents',
+        name: 'Sahifa boshqaruvi',
         path: '/layout-content',
         icon: 'mdi-marker'
       },
       {
-        name: 'Settings',
+        name: 'Sozlamalar',
         path: '/settings',
         icon: 'mdi-tools'
-      },
-      {
-        name: 'Comments & mails',
-        path: '/comments-list',
-        icon: 'mdi-comment-eye-outline'
       }
+      // {
+      //   name: 'Comments & mails',
+      //   path: '/comments-list',
+      //   icon: 'mdi-comment-eye-outline'
+      // }
     ]
   }),
   methods: {

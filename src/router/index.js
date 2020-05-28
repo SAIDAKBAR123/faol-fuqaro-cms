@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import goTo from 'vuetify/es5/services/goto'
 // import store from '../store/index'
 Vue.use(VueRouter)
@@ -12,8 +12,8 @@ const routes = [
     children: [
       {
         path: '/',
+        redirect: '/blog',
         name: 'Home',
-        component: Home,
         accessControl: true
       },
       {

@@ -1,8 +1,8 @@
 <template>
   <div>
      <v-container>
-         <v-row justify="start" align="center">
-             <v-col v-for="(item, i) in analysis" :key="i" cols="3">
+         <v-row justify="space-between" align="center">
+             <v-col v-for="(item, i) in analysis" :key="i" sm="4" md="3" xl="3" cols="12">
                  <v-card tile flat>
                     <v-row justify="start" class="mx-auto">
                         <v-col align-self="center" cols="3">
@@ -25,10 +25,10 @@
                  <v-card color="transparent" flat tile>
                      <v-row>
                          <v-col cols="auto">
-                             <v-btn rounded to="/create-post" color="primary">Create Post <v-icon right>mdi-plus</v-icon></v-btn>
+                             <v-btn rounded to="/create-post" color="primary">Yangilik qo'shish <v-icon right>mdi-plus</v-icon></v-btn>
                          </v-col>
                           <v-col cols="auto">
-                             <v-btn rounded text color="primary" to="/create-announcement">create announcement<v-icon right>mdi-bell</v-icon></v-btn>
+                             <v-btn rounded text color="primary" to="/create-announcement">E'lon qo'shish<v-icon right>mdi-bell</v-icon></v-btn>
                          </v-col>
                      </v-row>
                  </v-card>
@@ -44,7 +44,7 @@
                             dense
                             :items="postTypesList"
                             item-value="id"
-                            label="sort by"
+                            label="Saralash"
                             outlined
                             item-text="name"
                             hide-details
@@ -56,7 +56,7 @@
                             color="primary"
                             v-model="search"
                             append-icon="mdi-image-search-outline"
-                            label="Search"
+                            label="Qidirish"
                             class="pt-0"
                             single-line
                             hide-details
@@ -82,7 +82,7 @@
                           </v-card>
                         </template>
                          <template v-slot:item.status="{ item }">
-                          <v-chip :color="item.status ? 'light-green lighten-4' : 'deep-purple lighten-4'">{{item.status ? 'published': 'unpublished'}}</v-chip>
+                          <v-chip :color="item.status ? 'light-green lighten-4' : 'deep-purple lighten-4'">{{item.status ? 'chop etilgan': 'chop etilmagan'}}</v-chip>
                         </template>
                           <template v-slot:item.date="{ item }">
                          <span>{{item.createdAt | moment('Do MMM, YYYY')}}</span>
@@ -194,48 +194,48 @@ export default {
       analysis: [
         {
           icon: 'mdi-script-outline',
-          name: 'Total News',
+          name: 'Umumiy yangiliklar',
           value: '394'
         },
         {
           icon: 'mdi-account-supervisor',
-          name: 'Total Visitors',
+          name: 'Jami tashrif buyuruvchilar',
           value: '494'
         },
         {
           icon: 'mdi-note-text',
-          name: 'Total Archives',
+          name: 'Umumiy arxivlar',
           value: '3'
         },
         {
           icon: 'mdi-bullhorn-outline',
-          name: 'Total Announcements',
+          name: 'Umumiy e\'lonlar',
           value: '394'
         }
 
       ],
       postTypesList: [
         {
-          name: 'News',
+          name: 'Yangiliklar',
           id: 1
         },
         {
-          name: 'Announcements',
+          name: 'E\'lonlar',
           id: 2
         },
         {
-          name: 'Archived',
+          name: 'Arxivlar',
           id: 3
         }
 
       ],
       headers: [
-        { text: 'Title', value: 'title_uz' },
-        { text: 'Date', value: 'date' },
-        { text: 'Time', value: 'time' },
-        { text: 'View', value: 'timesSeen' },
+        { text: 'Mavzu', value: 'title_uz' },
+        { text: 'Sana', value: 'date' },
+        { text: 'Vaqt', value: 'time' },
+        { text: 'Ko\'rilgan', value: 'timesSeen' },
         { text: 'Status', value: 'status' },
-        { text: 'Actions', value: 'action' }
+        { text: 'Bajarish', value: 'action' }
       ],
       desserts: []
     }

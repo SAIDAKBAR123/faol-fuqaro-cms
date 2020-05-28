@@ -11,6 +11,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import i18n from './i18n'
 
 Vue.use(VueQuillEditor)
 Vue.use(Notifications)
@@ -22,5 +23,6 @@ new Vue({
   router,
   store,
   vuetify,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

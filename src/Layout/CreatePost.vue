@@ -4,13 +4,13 @@
          <v-row justify="space-between">
              <v-col cols="12">
                  <v-card flat tile>
-                       <p class="nunito fs_28 pa-3">New Post</p>
+                       <p class="nunito fs_28 pa-3">Yangilik</p>
                      <v-row justify="space-between">
                          <v-col cols="auto"><v-btn @click="saveAsDraft" large outlined class="mx-2"><v-icon left>mdi-eye-settings</v-icon> Default</v-btn></v-col>
                          <v-col cols="auto" class="mx-2">
                              <v-row justify="center" class="py-0">
-                                    <v-col class="py-0" cols="auto"><v-btn large outlined color="grey" to="/blog" class="">Cancel</v-btn></v-col>
-                                    <v-col class="py-0" cols="auto"><v-btn large color="primary" class="" @click="publish">Publish <v-icon right>mdi-menu-right-outline</v-icon></v-btn></v-col>
+                                    <v-col class="py-0" cols="auto"><v-btn large outlined color="grey" to="/blog" class="">Bekor qilish</v-btn></v-col>
+                                    <v-col class="py-0" cols="auto"><v-btn large color="primary" class="" @click="publish">Chop etish <v-icon right>mdi-menu-right-outline</v-icon></v-btn></v-col>
                              </v-row>
                          </v-col>
                      </v-row>
@@ -27,10 +27,10 @@
                       <v-card tile flat>
                           <v-row justify="start">
                               <v-col class="mx-2">
-                                  <p class="py-0">Article Title</p>
+                                  <p class="py-0">Maqola sarlavhasi</p>
                                     <v-text-field
                                     class=""
-                                      label="Title"
+                                      label="sarlavha kiriting"
                                       outlined
                                       dense
                                       v-model="item.title"
@@ -57,7 +57,7 @@
                  <v-card tile flat class="pa-3">
                       <v-row justify="center" align="center">
                     <v-col cols="py-0">
-                        <span class="py-0">Image for article</span>
+                        <span class="py-0">Maqola uchun rasm</span>
                     </v-col>
                     <v-col class="py-0" cols="12" align-self="center">
                         <v-card tile flat>
@@ -73,7 +73,7 @@
 
                                  </v-col>
                                  <v-col cols="12">
-                                    <p class="text-center text--secondary">Upload your image with Drag & Drop</p>
+                                    <p class="text-center text--secondary">Rasmingizni Drag & Drop yordamida yuklang</p>
                                  </v-col>
                              </v-row>
                          </div>
@@ -92,7 +92,7 @@
                 </v-row>
                 <v-row class="mt-2" justify="center" align="center">
                     <v-col cols="12" class="py-0">
-                        <span>Categories</span>
+                        <span>Toifa</span>
                     </v-col>
                          <v-col align-self="center" cols="12">
                                  <!-- <v-combobox
@@ -127,7 +127,7 @@
                               outlined
                               dense
                               item-text="name_uz"
-                              label="select one category"
+                              label="turni tanlang"
                             ></v-select>
                          </v-col>
                      </v-row>
@@ -140,7 +140,7 @@
                                      </v-list-item>
                                      <v-divider></v-divider>
                                      <v-list-item>
-                                         <span class="flex justify-space-between">Save as Draft: </span><v-switch v-model="saveStatus"></v-switch>
+                                         <span class="flex justify-space-between">Qoralama sifatida saqlang: </span><v-switch v-model="saveStatus"></v-switch>
                                      </v-list-item>
                                  </v-list>
                              </v-card>
@@ -187,7 +187,6 @@ export default {
       api: '',
       selected: [],
       selectedCategory: '',
-      content: '<span class="nunito fs_28_bold" >Stay home</span>',
       editorOption: {
         // Some Quill options...
       }
@@ -239,7 +238,7 @@ export default {
         console.log(res)
         this.$notify({
           group: 'foo',
-          title: 'Article has posted successfully',
+          title: 'Maqola muvaffaqiyatli joylashtirildi',
           type: 'success'
         })
         this.$router.push('/blog')
@@ -252,7 +251,7 @@ export default {
       const files = event.target.files
       const filename = files[0].name
       if (filename.lastIndexOf('.') <= 0) {
-        return alert('please, input correct image file!')
+        return alert("iltimos, to'g'ri rasm faylini kiriting!")
       }
       const fileReader = new FileReader()
       fileReader.addEventListener('load', () => {
