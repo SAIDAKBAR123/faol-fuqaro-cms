@@ -15,11 +15,11 @@
             md="3"
           >
             <v-card class="abigel">
-            <v-card class="elevation-12" color="transparent">
+            <v-card class="elevation-12" >
               <v-card-title class=" justify-center">
-                <v-avatar size="120"><v-img src="https://wallpaperaccess.com/full/103209.jpg"></v-img></v-avatar>
+                <v-avatar size="120"><v-icon color="grey darken-3" size="120">mdi-account-circle</v-icon></v-avatar>
               </v-card-title>
-              <v-card-subtitle class="text-center my-2 white--text display-2">Hi!</v-card-subtitle>
+              <v-card-subtitle class="text-center my-2 display-2">CMS</v-card-subtitle>
               <v-card-text>
                 <v-form>
                   <v-text-field
@@ -28,13 +28,11 @@
                     type="text"
                     outlined
                     v-model="username"
-                    dark
                   />
 
                   <v-text-field
                     id="password"
                     outlined
-                    dark
                      v-model="password"
                     label="Password"
                     name="password"
@@ -44,7 +42,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="blue darken-4" tile elevation="0" dark class="py-2 px-5" @click="login" x-large>Login</v-btn>
+                <v-btn color="blue darken-4" elevation="0" dark class="py-2 px-5" @click="login" x-large>Login</v-btn>
                  <v-spacer />
               </v-card-actions>
             </v-card>
@@ -108,7 +106,7 @@ export default {
     margin: -20px;
 }
 .bck_img {
-  background: url('https://www.pngkey.com/png/full/336-3369684_home-web-design-education-website-background.png');
+  background: url('https://wallpaperaccess.com/full/410244.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
