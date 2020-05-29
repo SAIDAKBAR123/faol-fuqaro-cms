@@ -8,5 +8,7 @@ export default {
   getAllPosts: () => execute(API().get('posts')),
   getSinglePost: id => execute(API().get(`posts/${id}`)),
   updateSinglePost: (id, data) => execute(API().post(`posts/${id}`, data)),
-  deleteSinglePost: id => execute(API().delete(`posts/${id}`))
+  deleteSinglePost: id => execute(API().delete(`posts/${id}`)),
+  getStats: () => execute(API().get('stats'))
+
 }

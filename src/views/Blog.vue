@@ -5,7 +5,7 @@
              <v-col v-for="(item, i) in analysis" :key="i" sm="4" md="3" xl="3" cols="12">
                  <v-card tile flat>
                     <v-row justify="start" class="mx-auto">
-                        <v-col align-self="center" cols="3">
+                        <v-col align-self="center" cols="auto">
                             <v-avatar size="70" color="light-blue lighten-5">
                                  <v-icon class="#081F2E" size="40">
                                 {{item.icon}}
@@ -13,7 +13,7 @@
                             </v-avatar>
                         </v-col>
                         <v-col cols="auto" align-self="center">
-                                <p class="pb-0 text--secondary">{{item.name}}</p>
+                                <p class="pb-0 body-1 text--secondary">{{item.name}}</p>
                                 <span class="display-1 font-weight-thin">{{item.value}}</span>
                         </v-col>
                     </v-row>
@@ -66,6 +66,7 @@
                  </v-card>
                  <v-card class="py-4 px-4" tile flat>
                       <v-data-table
+                        :page="10"
                         :loading="false"
                          loading-text="Loading... Please wait"
                         :headers="headers"
@@ -130,6 +131,15 @@ export default {
         flag: true,
         data: id
       }
+    },
+    getStats () {
+      Blogs.getStats().then(res => {
+        console.log(res)
+        this.analysis[0].value = res.totalPosts
+        this.analysis[1].value = res.draftAnnouncements + res.draftPosts
+        this.analysis[2].value = res.archivedAnnouncements + res.archivedPosts
+        this.analysis[3].value = res.totalAnnouncements
+      }).catch(err => console.log(err))
     },
     getAll () {
       if (this.$store.state.selectedType.id === 1) {
@@ -203,22 +213,22 @@ export default {
         {
           icon: 'mdi-script-outline',
           name: 'Umumiy yangiliklar',
-          value: '394'
+          value: '0'
         },
         {
-          icon: 'mdi-account-supervisor',
-          name: 'Jami tashrif buyuruvchilar',
-          value: '494'
+          icon: 'mdi-file-document-edit',
+          name: 'Nashr etilmagan',
+          value: '0'
         },
         {
-          icon: 'mdi-note-text',
+          icon: 'mdi-archive',
           name: 'Umumiy arxivlar',
-          value: '3'
+          value: '0'
         },
         {
           icon: 'mdi-bullhorn-outline',
           name: 'Umumiy e\'lonlar',
-          value: '394'
+          value: '0'
         }
 
       ],
@@ -249,6 +259,7 @@ export default {
     }
   },
   created () {
+    this.getStats()
     this.getAll()
   }
 }

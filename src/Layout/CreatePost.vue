@@ -6,11 +6,11 @@
                  <v-card flat tile>
                        <p class="nunito fs_28 pa-3">Yangilik</p>
                      <v-row justify="space-between">
-                         <v-col cols="auto"><v-btn @click="saveAsDraft" large outlined class="mx-2"><v-icon left>mdi-eye-settings</v-icon> Default</v-btn></v-col>
-                         <v-col cols="auto" class="mx-2">
-                             <v-row justify="center" class="py-0">
-                                    <v-col class="py-0" cols="auto"><v-btn large outlined color="grey" to="/blog" class="">Bekor qilish</v-btn></v-col>
-                                    <v-col class="py-0" cols="auto"><v-btn large color="primary" class="" @click="publish">Chop etish <v-icon right>mdi-menu-right-outline</v-icon></v-btn></v-col>
+                         <v-col cols="12" md="auto"><v-btn @click="saveAsDraft" large outlined class="mx-2"><v-icon left>mdi-eye-settings</v-icon> Default</v-btn></v-col>
+                         <v-col cols="12" md="auto" class="mx-2">
+                             <v-row justify="space-between" justify-md="center" class="py-0">
+                                    <v-col class="py-0" cols="auto" md="auto"><v-btn large outlined color="grey" to="/blog" class="">Bekor qilish</v-btn></v-col>
+                                    <v-col class="py-0" cols="auto" md="auto"><v-btn large color="primary" class="" @click="publish">Chop etish <v-icon right>mdi-menu-right-outline</v-icon></v-btn></v-col>
                              </v-row>
                          </v-col>
                      </v-row>
@@ -18,7 +18,7 @@
              </v-col>
          </v-row>
          <v-row>
-             <v-col  cols="9">
+             <v-col  cols="12" xl="9" md="9">
                 <v-tabs>
                   <v-tab>Uz</v-tab>
                   <v-tab>Ru</v-tab>
@@ -53,7 +53,7 @@
                   </v-tab-item>
                 </v-tabs>
              </v-col>
-             <v-col cols="3">
+             <v-col cols="12" md="3" xl="3">
                  <v-card tile flat class="pa-3">
                       <v-row justify="center" align="center">
                     <v-col cols="py-0">
@@ -70,7 +70,6 @@
                              <v-row justify="center">
                                  <v-col cols="auto">
                                      <v-icon color="grey lighten-4" size="80">mdi-cloud-upload-outline</v-icon>
-
                                  </v-col>
                                  <v-col cols="12">
                                     <p class="text-center text--secondary">Rasmingizni Drag & Drop yordamida yuklang</p>
