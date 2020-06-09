@@ -270,16 +270,17 @@ export default {
     },
     getSinglePost () {
       Blogs.getSinglePost(this.id).then(res => {
-        this.contents[0].title = res.title_uz
-        this.contents[0].content = res.body_uz
-        this.contents[1].title = res.title_ru
-        this.contents[1].content = res.body_ru
-        this.contents[2].title = res.title_en
-        this.contents[2].content = res.body_en
-        this.saveStatus = res.status ? 0 : 1
-        this.mainImage.url = res.mainImage.mainImageUrl
-        this.mainImage.id = res.mainImageId
-        this.mainImageId = res.mainImageId
+        console.log(res)
+        this.contents[0].title = res.post.title_uz
+        this.contents[0].content = res.post.body_uz
+        this.contents[1].title = res.post.title_ru
+        this.contents[1].content = res.post.body_ru
+        this.contents[2].title = res.post.title_en
+        this.contents[2].content = res.post.body_en
+        this.saveStatus = res.post.status ? 0 : 1
+        this.mainImage.url = res.post.mainImage.mainImageUrl
+        this.mainImage.id = res.post.mainImageId
+        this.mainImageId = res.post.mainImageId
       }).catch(err => console.log(err))
     },
 

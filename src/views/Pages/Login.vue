@@ -28,6 +28,7 @@
                     type="text"
                     outlined
                     v-model="username"
+                    v-on:keyup.enter="login"
                   />
 
                   <v-text-field
@@ -37,6 +38,7 @@
                     label="Password"
                     name="password"
                     type="password"
+                    v-on:keyup.enter="login"
                   />
                 </v-form>
               </v-card-text>

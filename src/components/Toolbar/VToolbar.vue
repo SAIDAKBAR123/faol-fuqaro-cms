@@ -95,32 +95,30 @@
         <v-col cols="auto">
              <v-menu offset-y>
                 <template v-slot:activator="{ on }">
-                  <v-btn  v-on="on" color="blue lighten-3" small fab dark>
-                    <v-avatar size="37"
-                      ><v-img
-                        src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                      ></v-img
-                    ></v-avatar>
+                  <v-btn elevation="0" v-on="on" color="blue-grey darken-4" small fab dark>
+                    <v-avatar size="33">
+                      <v-icon size="50">mdi-account-circle</v-icon>
+                      </v-avatar>
                   </v-btn>
                 </template>
                 <v-list two-line multiple width="260">
                     <v-list-item>
                       <v-list-item-avatar>
-                        <v-img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></v-img>
+                        <v-icon size="54">mdi-account-circle</v-icon>
                       </v-list-item-avatar>
                       <v-list-item-content>
                         <v-list-item-title>
                             <span class=" nunito">
-                                Saidakbar Makhmudkhujaev
+                                Admin Admin
                             </span>
                           </v-list-item-title>
                           <v-list-item-subtitle class=" nunito-sans-default">
-                            Visit your profile
+                            Profile sozlamalariga kirish
                           </v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
                   <v-list-item>
-                    <v-btn text tile block @click="logout">  Leave<v-icon right>mdi-exit-to-app</v-icon></v-btn>
+                    <v-btn color="red" text tile block @click="logout">  Chiqish<v-icon right>mdi-exit-to-app</v-icon></v-btn>
                   </v-list-item>
                 </v-list>
           </v-menu>
@@ -140,20 +138,8 @@ export default {
     items: [
       {
         action: '15 min',
-        headline: 'Like your post at: 20/12/2020',
-        title: 'Saida Azimova',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-      },
-      {
-        action: '15 min',
-        headline: 'Like your post at: 20/12/2020',
-        title: 'Saida Azimova',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-      },
-      {
-        action: '15 min',
-        headline: 'Like your post at: 20/12/2020',
-        title: 'Saida Azimova',
+        headline: 'Malumot eski update kuting',
+        title: 'Dummy data',
         subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       }
     ],
