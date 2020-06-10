@@ -233,17 +233,17 @@ export default {
     getAll () {
       Announcement.getSingleAnn(this.id).then(res => {
         console.log(res)
-        this.contents[0].title = res.title_uz
-        this.contents[0].content = res.body_uz
-        this.contents[1].title = res.title_ru
-        this.contents[1].content = res.body_ru
-        this.contents[2].title = res.title_en
-        this.contents[2].content = res.body_en
-        this.saveStatus = res.status ? 0 : 1
-        this.mainImage.url = res.mainImage.mainImageUrl
-        this.mainImage.id = res.mainImageId
-        this.mainImageId = res.mainImageId
-        this.date = new Date(res.expiryDate).toISOString().substr(0, 10)
+        this.contents[0].title = res.announcement.title_uz
+        this.contents[0].content = res.announcement.body_uz
+        this.contents[1].title = res.announcement.title_ru
+        this.contents[1].content = res.announcement.body_ru
+        this.contents[2].title = res.announcement.title_en
+        this.contents[2].content = res.announcement.body_en
+        this.saveStatus = res.announcement.status ? 0 : 1
+        this.mainImage.url = res.announcement.mainImage.mainImageUrl
+        this.mainImage.id = res.announcement.mainImageId
+        this.mainImageId = res.announcement.mainImageId
+        this.date = new Date(res.announcement.expiryDate).toISOString().substr(0, 10)
         console.log(this.date)
       }).catch(err => {
         console.log(err)
