@@ -134,7 +134,7 @@ export default {
     },
     getStats () {
       Blogs.getStats().then(res => {
-        console.log(res)
+        // console.log(res)
         this.analysis[0].value = res.totalPosts
         this.analysis[1].value = res.draftAnnouncements + res.draftPosts
         this.analysis[2].value = res.archivedAnnouncements + res.archivedPosts
@@ -170,14 +170,14 @@ export default {
   watch: {
     item: {
       handler (val) {
-        console.log(val)
+        // console.log(val)
       },
       deep: true
     },
     selectedType (val) {
       if (val.id === 1) {
         Blogs.getAllPosts().then(res => {
-          console.log(res)
+          // console.log(res)
           this.$store.commit('setType', val)
           this.desserts = res
         }).catch(err => console.log(err))

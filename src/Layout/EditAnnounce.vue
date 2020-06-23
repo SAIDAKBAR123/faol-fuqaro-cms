@@ -232,7 +232,7 @@ export default {
     },
     getAll () {
       Announcement.getSingleAnn(this.id).then(res => {
-        console.log(res)
+        // console.log(res)
         this.contents[0].title = res.announcement.title_uz
         this.contents[0].content = res.announcement.body_uz
         this.contents[1].title = res.announcement.title_ru
@@ -244,7 +244,7 @@ export default {
         this.mainImage.id = res.announcement.mainImageId
         this.mainImageId = res.announcement.mainImageId
         this.date = new Date(res.announcement.expiryDate).toISOString().substr(0, 10)
-        console.log(this.date)
+        // console.log(this.date)
       }).catch(err => {
         console.log(err)
       })
