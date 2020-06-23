@@ -95,9 +95,9 @@
         <v-col cols="auto">
              <v-menu offset-y>
                 <template v-slot:activator="{ on }">
-                  <v-btn elevation="0" v-on="on" color="blue-grey darken-4" small fab dark>
-                    <v-avatar size="33">
-                      <v-icon size="50">mdi-account-circle</v-icon>
+                  <v-btn elevation="0" v-on="on" color="blue-grey darken-2" small fab dark>
+                    <v-avatar size="30">
+                      <v-icon size="40">mdi-account-circle</v-icon>
                       </v-avatar>
                   </v-btn>
                 </template>
