@@ -153,22 +153,22 @@ export default {
         name: 'Yangiliklar',
         path: '/blog',
         icon: 'mdi-feather'
-      },
+      }
       // {
       //   name: 'Portfolio',
       //   path: '/portfolio',
       //   icon: 'mdi-file-document-edit-outline'
       // },
-      {
-        name: 'Sahifa boshqaruvi',
-        path: '/layout-content',
-        icon: 'mdi-marker'
-      },
-      {
-        name: 'Sozlamalar',
-        path: '/settings',
-        icon: 'mdi-tools'
-      }
+      // {
+      //   name: 'Sahifa boshqaruvi',
+      //   path: '/layout-content',
+      //   icon: 'mdi-marker'
+      // },
+      // {
+      //   name: 'Sozlamalar',
+      //   path: '/settings',
+      //   icon: 'mdi-tools'
+      // }
       // {
       //   name: 'Comments & mails',
       //   path: '/comments-list',

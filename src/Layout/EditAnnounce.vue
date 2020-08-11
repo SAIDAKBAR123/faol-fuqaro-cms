@@ -209,7 +209,10 @@ export default {
           type: 'success'
         })
         this.$router.push('/blog')
-      }).catch(err => console.log(err))
+      }).catch(err => {
+        console.log(err)
+        alert(err.data.errors[0].msg)
+      })
     },
     onPickFile () {
       this.$refs.fileInput.click()
@@ -226,7 +229,7 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.imageFile.append('file', files[0])
 
-      Announcement.updateMainImage(this.id, this.imageFile).then(res => {
+      Announcement.updateMainImage(this.mainImageId, this.imageFile).then(res => {
         this.mainImage = res
       }).catch(err => console.log(err))
     },

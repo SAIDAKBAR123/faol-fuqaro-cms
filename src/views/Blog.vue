@@ -92,7 +92,7 @@
                          <span>{{item.createdAt | moment('h:mm:ss a')}}</span>
                         </template>
                         <template v-slot:item.action="{ item }">
-                          <v-row>
+                          <v-row v-if="$store.state.selectedType.id !== 3">
                               <v-col cols="auto">
                                   <v-btn color="grey darken-3" @click="redirectRoute(item.id)" text  small fab><v-icon>mdi-fountain-pen-tip</v-icon></v-btn>
                               </v-col>
@@ -101,13 +101,13 @@
                               </v-col>
                               <v-col cols="auto">
                                   <!-- <delete-blog-dialog :postId="item.id" /> -->
-                                   <v-btn text color="grey darken-3" @click="deletePost(item.id)" small fab><v-icon>mdi-trash-can-outline</v-icon></v-btn>
+                                   <v-btn text color="grey darken-3" @click="deletePost(item.id, item)" small fab><v-icon>mdi-trash-can-outline</v-icon></v-btn>
                               </v-col>
                           </v-row>
                         </template>
                     </v-data-table>
                  </v-card>
-                 <delete-blog-dialog v-if="deleteSinglePost.flag" :updateTable="this.getAll"  :post="deleteSinglePost" />
+                 <delete-blog-dialog v-if="deleteSinglePost.flag" :updateTable="this.getAll"  :status="$store.state.selectedType.id" :post="deleteSinglePost" />
              </v-col>
          </v-row>
      </v-container>
@@ -177,7 +177,6 @@ export default {
     selectedType (val) {
       if (val.id === 1) {
         Blogs.getAllPosts().then(res => {
-          // console.log(res)
           this.$store.commit('setType', val)
           this.desserts = res
         }).catch(err => console.log(err))
@@ -202,7 +201,7 @@ export default {
   },
   data () {
     return {
-      selectedType: 1,
+      selectedType: this.$store.state.selectedType.id,
       deleteSinglePost: {
         flag: false,
         data: ''

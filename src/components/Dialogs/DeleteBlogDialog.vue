@@ -24,6 +24,7 @@
 
 <script>
 import Blogs from '../../services/Blogs'
+import Announcement from '../../services/Announcement'
 export default {
   props: {
     post: {
@@ -32,6 +33,10 @@ export default {
     },
     updateTable: {
       type: Function,
+      required: true
+    },
+    status: {
+      type: Number,
       required: true
     }
   },
@@ -42,12 +47,20 @@ export default {
   },
   methods: {
     deletePost () {
-      console.log(this.post)
-      Blogs.deleteSinglePost(this.post.data).then(res => {
-        console.log(res)
-        this.updateTable()
-        this.post.flag = false
-      }).catch(err => console.log(err))
+      if (this.status === 1) {
+        Blogs.deleteSinglePost(this.post.data).then(res => {
+          // console.log(res)
+          this.updateTable()
+          this.post.flag = false
+        }).catch(err => console.log(err))
+      } else if (this.status === 2) {
+        Announcement.deleteSingleAnn(this.post.data).then(res => {
+          this.updateTable()
+          this.post.flag = false
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     }
   },
   created () {

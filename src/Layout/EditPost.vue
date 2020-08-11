@@ -127,6 +127,7 @@
                               outlined
                               dense
                               item-text="name_uz"
+                              item-value="name_uz"
                               label="turni tanlang"
                             ></v-select>
                          </v-col>
@@ -189,7 +190,7 @@ export default {
       imageFile: new FormData(),
       api: '',
       selected: [],
-      selectedCategory: '',
+      selectedCategory: {},
       content: '<span class="nunito fs_28_bold" >Stay home</span>',
       editorOption: {
         // Some Quill options...
@@ -215,7 +216,6 @@ export default {
     saveAsDraft () {
     },
     savePost () {
-      console.log(this.mainImage)
       const formData = {
         title_uz: this.contents[0].title,
         title_ru: this.contents[1].title,
@@ -226,7 +226,7 @@ export default {
         tags: [],
         status: this.saveStatus ? 0 : 1,
         mainImageId: this.mainImageId,
-        categoryId: 2
+        categoryId: this.selectedCategory.id
       }
 
       Blogs.updateSinglePost(this.id, formData).then(res => {
@@ -253,9 +253,8 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.imageFile.append('file', files[0])
 
-      Blogs.updateMainImage(this.id, this.imageFile).then(res => {
+      Blogs.updateMainImage(this.mainImageId, this.imageFile).then(res => {
         this.mainImage = res
-        console.log(this.mainImage)
       }).catch(err => console.log(err))
     },
     // getAll () {
@@ -270,7 +269,6 @@ export default {
     },
     getSinglePost () {
       Blogs.getSinglePost(this.id).then(res => {
-        console.log(res)
         this.contents[0].title = res.post.title_uz
         this.contents[0].content = res.post.body_uz
         this.contents[1].title = res.post.title_ru
@@ -280,6 +278,7 @@ export default {
         this.saveStatus = res.post.status ? 0 : 1
         this.mainImage.url = res.post.mainImage.mainImageUrl
         this.mainImage.id = res.post.mainImageId
+        this.selectedCategory = res.post.category
         this.mainImageId = res.post.mainImageId
       }).catch(err => console.log(err))
     },
